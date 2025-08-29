@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Teste Vocacional - Psicologia</title>
+<style>
+body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background: linear-gradient(135deg, #fce4ec, #f3e5f5);margin: 0;padding: 0;color: #333;}
+.container {max-width: 850px;margin: 30px auto;background: #fff;padding: 30px;border-radius: 20px;box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
+h1 {text-align: center;color: #8e24aa;}
+.question {margin: 20px 0 10px 0;font-weight: bold;color: #6a1b9a;}
+.options label {display: block;background: #f8bbd0;padding: 10px;margin: 8px 0;border-radius: 12px;cursor: pointer;transition: all 0.3s ease;}
+.options input {display: none;}
+.options label:hover {background: #f48fb1;color: white;}
+button {display: block; margin: 20px auto;padding: 12px 25px;background: #8e24aa;color: white;border: none;border-radius: 12px;cursor: pointer;font-size: 16px;transition: background 0.3s ease;}
+button:hover {background: #6a1b9a;}
+#result {margin-top: 30px;padding: 20px;background: #f3e5f5;border-radius: 15px;display: none;}
+#result h2 {text-align: center; color: #6a1b9a,}
+.disclaimer {margin-top: 20px;font-size: 14px; text-align: center; color: #666;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>✨ Teste Vocacional em Psicologia ✨</h1>
+<p style="text-align:center; font-size:15px; color:#555;">
+Responda às 20 perguntas e descubra qual área da Psicologia mais combina com você!  
+<br><b>⚠️ Este teste é apenas uma simulação acadêmica e não substitui avaliação psicológica.</b>
+</p>
+<form id="quizForm">
+<!-- Perguntas 1 a 20 -->
+<div class="question">1. Você prefere trabalhar com:</div>
+<div class="options">
+<label><input type="radio" name="q1" value="clinica"> Ouvir e acolher pessoas em sofrimento emocional</label>
+<label><input type="radio" name="q1" value="organizacional"> Organizar ambientes de trabalho e pessoas</label>
+<label><input type="radio" name="q1" value="escolar"> Acompanhar alunos no processo de aprendizagem</label>
+<label><input type="radio" name="q1" value="hospitalar"> Apoiar pacientes em hospitais</label>
+<label><input type="radio" name="q1" value="social"> Trabalhar em projetos sociais</label>
+<label><input type="radio" name="q1" value="juridica"> Atuar em contextos jurídicos</label>
+<label><input type="radio" name="q1" value="neuro"> Estudar o funcionamento do cérebro</label>
+<label><input type="radio" name="q1" value="esporte"> Apoiar atletas em desempenho e saúde mental</label>
+<label><input type="radio" name="q1" value="transito"> Atuar na educação e segurança no trânsito</label>
+</div>
+<div class="question">2. Qual cenário mais te motiva?</div>
+<div class="options">
+<label><input type="radio" name="q2" value="clinica"> Consultórios e clínicas</label>
+<label><input type="radio" name="q2" value="organizacional"> Empresas e departamentos de RH</label>
+<label><input type="radio" name="q2" value="escolar"> Escolas e universidades</label>
+<label><input type="radio" name="q2" value="hospitalar"> Hospitais e clínicas de saúde</label>
+<label><input type="radio" name="q2" value="social"> Comunidades e ONGs</label>
+<label><input type="radio" name="q2" value="juridica"> Tribunais e perícias</label>
+<label><input type="radio" name="q2" value="neuro"> Laboratórios de pesquisa em neurociência</label>
+<label><input type="radio" name="q2" value="esporte"> Clubes esportivos e academias</label>
+<label><input type="radio" name="q2" value="transito"> Trânsito e educação de motoristas</label>
+</div>
+<!-- Continue repetindo o padrão até q20, exemplo: -->
+<div class="question">3. Qual habilidade você mais gosta de desenvolver?</div>
+<div class="options">
+<label><input type="radio" name="q3" value="clinica"> Empatia e escuta ativa</label>
+<label><input type="radio" name="q3" value="organizacional"> Planejamento e liderança</label>
+<label><input type="radio" name="q3" value="escolar"> Orientação educacional</label>
+<label><input type="radio" name="q3" value="hospitalar"> Apoio a pacientes e familiares</label>
+<label><input type="radio" name="q3" value="social"> Mobilização social</label>
+<label><input type="radio" name="q3" value="juridica"> Perícia e análise jurídica</label>
+<label><input type="radio" name="q3" value="neuro"> Análise de funções cognitivas</label>
+<label><input type="radio" name="q3" value="esporte"> Motivação e performance</label>
+<label><input type="radio" name="q3" value="transito"> Educação e segurança viária</label>
+</div>
+<!-- Adicione perguntas q4 a q20 seguindo o mesmo padrão -->
+<button type="button" onclick="showResult()">Ver Resultado</button>
+</form>
+<div id="result">
+<h2>Seu Resultado 🎓</h2>
+<p id="resultText"></p>
+</div>
+<p class="disclaimer">
+⚠️ Este teste é apenas uma simulação acadêmica para fins de estudo e não substitui avaliação psicológica profissional.
+</p>
+</div>
+<script>
+function showResult() {let form = document.getElementById('quizForm');
+  let answers = new FormData(form);
+  let scores = {clinica:0, organizacional:0, escolar:0, hospitalar:0,social:0, juridica:0, neuro:0, esporte:0, transito:0};
+  for (let value of answers.values()) {scores[value]++;}
+  let topArea = Object.keys(scores).reduce((a,b)=> scores[a] > scores[b]? a:b);
+  let descriptions = {clinica:"🛋️ <b>Psicologia Clínica</b>: Você tem interesse em compreender profundamente o ser humano, ouvir histórias, acolher e promover autoconhecimento. Pode atuar em consultórios, clínicas e instituições.",
+    organizacional:"💼 <b>Psicologia Organizacional</b>: Seu foco está no trabalho em empresas, gestão de pessoas, clima organizacional e recrutamento.",
+    escolar:"📚 <b>Psicologia Escolar e Educacional</b>: Você gosta de contribuir para o desenvolvimento de alunos e melhorar o processo de aprendizagem.",
+    hospitalar:"🏥 <b>Psicologia Hospitalar</b>: Seu interesse está em apoiar pacientes, familiares e equipes de saúde em hospitais.",
+    social:"🌍 <b>Psicologia Social</b>: Você se interessa por comunidades, inclusão, políticas públicas e transformação social.",
+    juridica:"⚖️ <b>Psicologia Jurídica</b>: Você tem afinidade com o sistema de justiça, perícias e casos jurídicos.",
+    neuro:"🧠 <b>Neuropsicologia</b>: Sua curiosidade é voltada ao funcionamento do cérebro, cognição e comportamento.",
+    esporte:"⚽ <b>Psicologia do Esporte</b>: Você gosta de motivação, desempenho e saúde mental de atletas e equipes.",
+    transito:"🚦 <b>Psicologia do Trânsito</b>: Você se interessa pelo comportamento de motoristas e pedestres, prevenção de acidentes e educação para segurança viária."};
+  document.getElementById('resultText').innerHTML = descriptions[topArea];
+  document.getElementById('result').style.display = 'block';
+  window.scrollTo(0, document.body.scrollHeight);}
+</script>
+</body>
+</html>
+
